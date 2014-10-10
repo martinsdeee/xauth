@@ -34,8 +34,8 @@ Once this operation completes, the final step is to add the service provider. Op
 ```
 
 Add new items to route file `app/routes.php`
-```
-...
+```php
+
 
 Route::get('login', [
 	'as'=>'create.session',
@@ -52,6 +52,6 @@ Route::post('logout', [
   'uses'=>'SessionController@destroy'
 ]);
 
-...
+
 
 ```
