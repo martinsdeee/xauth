@@ -26,7 +26,7 @@ Route::post('login', [
   'uses'=>'SessionsController@store'
 ]);
 
-Route::post('logout', [
+Route::get('logout', [
   'as'=>'destroy.session',
   'uses'=>'SessionsController@destroy'
 ]);

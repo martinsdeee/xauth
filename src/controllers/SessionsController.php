@@ -9,7 +9,17 @@ class SessionsController extends \BaseController {
    */
   public function create()
   {
-    return 'Login Form';
+    return View::make('xauth::sessions.create');
+  }
+
+  public function store()
+  {
+    return 'Store Session';
+  }
+
+  public function destroy()
+  {
+    return 'Destroy Session';
   }
 
 }
