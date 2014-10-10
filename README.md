@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/martinsdeee/xauth.svg?branch=master)](https://travis-ci.org/martinsdeee/xauth)
-
+[![Total Downloads](https://poser.pugx.org/martinsdeee/xauth/downloads.svg)](https://packagist.org/packages/martinsdeee/xauth)
 # Laravel 4 xAuth Package
 Package for user authorization managament
 
