@@ -16,7 +16,7 @@ Begin by installing this package through Composer. Edit your project's `composer
 ```js
 {
     "require": {
-        "martinsdeee/xauth": "0.1.*"
+        "martinsdeee/xauth": "dev-master"
     }
 }
 ```

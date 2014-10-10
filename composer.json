@@ -1,6 +1,7 @@
 {
     "name": "martinsdeee/xauth",
-    "description": "",
+    "description": "Laravel 4 xAuth Package for user authorization managament",
+    "license": "MIT",
     "authors": [
         {
             "name": "Martins Dumbris",
