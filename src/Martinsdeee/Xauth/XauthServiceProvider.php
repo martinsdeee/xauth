@@ -19,6 +19,7 @@ class XauthServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('martinsdeee/xauth');
+		include __DIR__.'/../../routes.php';
 	}
 
 	/**

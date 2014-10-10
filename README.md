@@ -32,26 +32,3 @@ Once this operation completes, the final step is to add the service provider. Op
 ```php
 'Martinsdeee\Xauth\XauthServiceProvider'
 ```
-
-Add new items to route file `app/routes.php`
-```php
-
-
-Route::get('login', [
-	'as'=>'create.session',
-	'uses'=>'SessionController@create'
-]);
-
-Route::post('login', [
-  'as'=>'store.session',
-  'uses'=>'SessionController@store'
-]);
-
-Route::post('logout', [
-  'as'=>'destroy.session',
-  'uses'=>'SessionController@destroy'
-]);
-
-
-
-```
