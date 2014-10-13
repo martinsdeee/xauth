@@ -21,6 +21,8 @@ Begin by installing this package through Composer. Edit your project's `composer
 ```js
 {
     "require": {
+        "martinsdeee/xlayout": "dev-master",
+        "way/form": "dev-master",
         "martinsdeee/xauth": "dev-master"
     }
 }
@@ -36,4 +38,10 @@ Once this operation completes, the final step is to add the service provider. Op
 
 ```php
 'Martinsdeee\Xauth\XauthServiceProvider'
+```
+
+Migrate database
+
+```
+php artisan migrate --package="martinsdeee/xlayout"
 ```
