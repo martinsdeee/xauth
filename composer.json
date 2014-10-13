@@ -1,6 +1,6 @@
 {
     "name": "martinsdeee/xauth",
-    "description": "Laravel 4 xLayout Package",
+    "description": "Laravel 4 xAuth Package",
     "license": "MIT",
     "authors": [
         {
@@ -11,7 +11,6 @@
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "4.2.*",
-        "martinsdeee/xlayout": "dev-master"
     },
     "autoload": {
         "classmap": [
