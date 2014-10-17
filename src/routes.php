@@ -30,3 +30,15 @@ Route::get('logout', [
   'as'=>'destroy.session',
   'uses'=>'SessionsController@destroy'
 ]);
+
+Route::get('password/remind', [
+  'as'=>'password.remind',
+  'uses'=>'SessionsController@remind'
+]);
+
+
+// Delete after test
+Route::get('password/reset', [
+  'as'=>'password.reset',
+  'uses'=>'SessionsController@reset'
+]);
