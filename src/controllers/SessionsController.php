@@ -1,5 +1,6 @@
-
 <?php
+
+use Martinsdeee\Xauth\User as User;
 
 class SessionsController extends \BaseController {
 
@@ -24,12 +25,23 @@ class SessionsController extends \BaseController {
 
   public function store()
   {
-    return 'Store Session';
+    $input = Input::only('usernameOrEmail', 'password');
+    $field = filter_var($input['usernameOrEmail'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+    if (Auth::attempt(array($field => $input['usernameOrEmail'], 'password' => $input['password']), true)) {
+      return Redirect::home();
+    } 
+    return Redirect::route('create.session');
   }
 
+  /**
+   * Destroy Session
+   * @return Redirect
+   */
   public function destroy()
   {
-    return 'Destroy Session';
+    Auth::logout();
+    return Redirect::home();
   }
 
 }

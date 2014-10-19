@@ -43,5 +43,19 @@ Once this operation completes, the final step is to add the service provider. Op
 Migrate database
 
 ```
-php artisan migrate --package="martinsdeee/xlayout"
+php artisan migrate --package="martinsdeee/xauth"
 ```
+
+Config User model `app/models/User.php`
+
+```php
+
+use Martinsdeee\Xauth\User as xUser;
+
+class User extends xUser {
+
+}
+
+```
+
+

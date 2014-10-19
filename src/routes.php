@@ -31,6 +31,10 @@ Route::get('logout', [
   'uses'=>'SessionsController@destroy'
 ]);
 
+/**
+ * Password Reset
+ */
+
 Route::get('password/remind', [
   'as'=>'password.remind',
   'uses'=>'SessionsController@remind'
@@ -41,4 +45,18 @@ Route::get('password/remind', [
 Route::get('password/reset', [
   'as'=>'password.reset',
   'uses'=>'SessionsController@reset'
+]);
+
+/**
+ * Users
+ */
+
+Route::get('user/create', [
+  'as'=>'user.create',
+  'uses'=>'UsersController@create'
+]);
+
+Route::post('user/create', [
+  'as'=>'user.store',
+  'uses'=>'UsersController@store'
 ]);

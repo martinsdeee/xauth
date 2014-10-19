@@ -12,7 +12,7 @@
         <div class="panel-body">
           {{Form::open()}}
             <div class='form-group'>
-              <input class="form-control input" type="text" name="username" placeholder="Username">
+              <input class="form-control input" type="text" name="usernameOrEmail" placeholder="Username Or Email">
             </div>
             <div class='form-group'>
               <input class="form-control input" type="password" name="password" placeholder="Password">
