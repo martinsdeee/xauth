@@ -5,6 +5,13 @@
 @section('content')
   <div class="row">    
     <div class="col-md-4 col-md-offset-4">
+      @if(Session::has('flash_message'))
+        <div class='form-group'>
+          <div class="alert alert-danger">
+            {{Session::get('flash_message')}}
+          </div>
+        </div>
+      @endif
       <div class="panel panel-default">
         <div class="panel-heading">
           Login
@@ -30,7 +37,8 @@
               {{link_to_route('password.remind', 'Forgot Password', null, ['class' => 'pull-right'])}}
             </div>
         </div>
-          {{Form::close()}}
+        {{Form::close()}}
+        
       </div>
       
     </div>

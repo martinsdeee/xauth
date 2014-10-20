@@ -27,11 +27,10 @@ class SessionsController extends \BaseController {
   {
     $input = Input::only('usernameOrEmail', 'password');
     $field = filter_var($input['usernameOrEmail'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-
     if (Auth::attempt(array($field => $input['usernameOrEmail'], 'password' => $input['password']), true)) {
-      return Redirect::home();
+      return Redirect::intended('/');
     } 
-    return Redirect::route('create.session');
+    return Redirect::back()->withInput()->withFlashMessage('Invalid credentials provided');
   }
 
   /**
@@ -41,7 +40,7 @@ class SessionsController extends \BaseController {
   public function destroy()
   {
     Auth::logout();
-    return Redirect::home();
+    return Redirect::to('/');
   }
 
 }

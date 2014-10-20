@@ -34,9 +34,4 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     	'password' => 'required|confirmed'
     ];
 
-    public static function test()
-    {
-    	return "Hello";
-    }
-
 }

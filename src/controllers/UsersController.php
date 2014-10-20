@@ -39,8 +39,9 @@ class UsersController extends \BaseController {
 		$valid = Validator::make($input, User::$rules);
 		if ($valid->passes()) 
 		{
+			$input['password'] = Hash::make($input['password']);
 			User::create($input);
-			return Redirect::home();
+			return Redirect::to('/');
 		}
 		else
 		{
