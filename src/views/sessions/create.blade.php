@@ -1,4 +1,4 @@
-@extends('xlayout::layouts.master')
+@extends(Config::get('xauth::default-layout'))
 
 @section('meta-title', 'Login')
 

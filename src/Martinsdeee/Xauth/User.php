@@ -34,4 +34,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     	'password' => 'required|confirmed'
     ];
 
+    public function profile()
+    {
+    	return $this->hasOne('Martinsdeee\Xauth\Profile');
+    }
+
 }

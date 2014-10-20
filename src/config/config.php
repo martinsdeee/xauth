@@ -14,4 +14,16 @@ return	[
 
 	'module' => 'org',
 
+	/*
+	|--------------------------------------------------------------------------
+	| View Layout
+	|--------------------------------------------------------------------------
+	|	Chose layout 
+	|	Default layout is from Xlayout 
+	|
+	*/
+
+	'login-layout' => 'xlayout::layouts.master',
+	'default-layout' => 'xlayout::layouts.master',
+
 ];

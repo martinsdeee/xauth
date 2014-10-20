@@ -60,3 +60,12 @@ Route::post('user/create', [
   'as'=>'user.store',
   'uses'=>'UsersController@store'
 ]);
+
+/**
+ * Profile
+ */
+
+Route::get('/profile/@{profile}', [
+  'as'=>'profile.show',
+  'uses'=>'ProfilesController@show'
+]);

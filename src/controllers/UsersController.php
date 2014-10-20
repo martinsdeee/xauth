@@ -2,6 +2,7 @@
 
 
 use Martinsdeee\Xauth\User as User;
+use Martinsdeee\Xauth\Profile as Profile;
 
 class UsersController extends \BaseController {
 
@@ -35,12 +36,17 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::only('username', 'email', 'password', 'password_confirmation');
-		$valid = Validator::make($input, User::$rules);
+		$inputUser = Input::only('username', 'email', 'password', 'password_confirmation');
+		$inputProfile = Input::only('firstname', 'lastname', 'display_name', 
+    	'company', 'organization', 'object', 'department',
+    	'signature', 'title', 'skills', 'phone', 'mobile', 'inner',
+    	'contact_email', 'data');
+		$valid = Validator::make($inputUser, User::$rules);
 		if ($valid->passes()) 
 		{
-			$input['password'] = Hash::make($input['password']);
-			User::create($input);
+			$inputUser['password'] = Hash::make($inputUser['password']);
+			$user = User::create($inputUser);
+			$user->profile()->save(new Profile($inputProfile));
 			return Redirect::to('/');
 		}
 		else

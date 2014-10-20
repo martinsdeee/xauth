@@ -25,7 +25,7 @@
   
 ?>
 
-@extends('xlayout::layouts.master')
+@extends(Config::get('xauth::login-layout'))
 
 @section('title', 'Password Remind')
 
