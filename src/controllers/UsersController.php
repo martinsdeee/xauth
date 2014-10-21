@@ -6,6 +6,10 @@ use Martinsdeee\Xauth\Profile as Profile;
 
 class UsersController extends \BaseController {
 
+	public function __construct()
+	{
+		$this->beforeFilter('currentUser', ['only'=>['edit','update']]);
+	}
 	/**
 	 * Display a listing of the resource.
 	 * GET /users
@@ -46,6 +50,7 @@ class UsersController extends \BaseController {
 		{
 			$inputUser['password'] = Hash::make($inputUser['password']);
 			$user = User::create($inputUser);
+			$inputProfile['display_name'] = $inputProfile['firstname'] . " " . $inputProfile['lastname'];
 			$user->profile()->save(new Profile($inputProfile));
 			return Redirect::to('/');
 		}
@@ -59,27 +64,16 @@ class UsersController extends \BaseController {
 	}
 
 	/**
-	 * Display the specified resource.
-	 * GET /users/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
 	 * Show the form for editing the specified resource.
 	 * GET /users/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($username)
 	{
-		//
+		$user = User::whereUsername($username)->first();
+		return View::make('xauth::users.settings')->withUser($user);
 	}
 
 	/**

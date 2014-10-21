@@ -1,5 +1,7 @@
 <?php
-
+use Martinsdeee\Xauth\User as User;
+use Martinsdeee\Xauth\Profile as Profile;
+use Martinsdeee\Xauth\Role as Role;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -41,22 +43,22 @@ Route::get('password/remind', [
 ]);
 
 
-// Delete after test
-Route::get('password/reset', [
-  'as'=>'password.reset',
-  'uses'=>'SessionsController@reset'
-]);
-
 /**
  * Users
  */
 
-Route::get('user/create', [
-  'as'=>'user.create',
-  'uses'=>'UsersController@create'
-]);
 
 Route::post('user/create', [
+  'as'=>'user.store',
+  'uses'=>'UsersController@store'
+]);
+
+Route::get('user/{username}/edit', [
+  'as'=>'user.edit',
+  'uses'=>'UsersController@edit'
+]);
+
+Route::post('user/{username}/edit', [
   'as'=>'user.store',
   'uses'=>'UsersController@store'
 ]);
@@ -65,7 +67,42 @@ Route::post('user/create', [
  * Profile
  */
 
-Route::get('/profile/@{profile}', [
+Route::get('/profile/@{username}', [
   'as'=>'profile.show',
-  'uses'=>'ProfilesController@show'
+  'uses'=>'ProfilesController@show',
+  'before' => 'auth'
 ]);
+
+Route::get('/profile/@{username}/edit', [
+  'as'=>'profile.edit',
+  'uses'=>'ProfilesController@edit',
+  'before' => 'auth'
+]);
+
+Route::post('/profile/@{username}/edit', [
+  'as'=>'profile.update',
+  'uses'=>'ProfilesController@update',
+  'before' => 'auth'
+]);
+
+/**
+ * Filters
+ */
+
+Route::filter('currentUser', function($route)
+{
+  if ( \Auth::guest() ) return Redirect::to('/');
+
+  if ( \Auth::user()->username !== $route->parameter('username') )
+  {
+    return Redirect::to('/');
+  }
+});
+
+Route::filter('role', function($route, $request, $role)
+{
+  if (Auth::guest() or Auth::user()->hasRole($role)) 
+  {
+    return Redirect::to('/');
+  }
+});
