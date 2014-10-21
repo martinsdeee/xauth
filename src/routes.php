@@ -48,6 +48,11 @@ Route::get('password/remind', [
  */
 
 
+Route::get('user/create', [
+  'as'=>'user.create',
+  'uses'=>'UsersController@create'
+]);
+
 Route::post('user/create', [
   'as'=>'user.store',
   'uses'=>'UsersController@store'
@@ -101,7 +106,7 @@ Route::filter('currentUser', function($route)
 
 Route::filter('role', function($route, $request, $role)
 {
-  if (Auth::guest() or Auth::user()->hasRole($role)) 
+  if (Auth::guest() or Auth::user()->hasRole($role))
   {
     return Redirect::to('/');
   }

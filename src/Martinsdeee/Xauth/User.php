@@ -35,10 +35,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     ];
 
     public static $rules_settings = [
-        'username' => 'required|unique:users',
         'email' => 'required|email|unique:users',
-        'password' => 'required|confirmed'
+        'language' => 'required'
     ];
+
 
     // Bind with Profile
     public function profile()

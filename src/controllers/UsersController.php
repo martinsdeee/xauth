@@ -41,12 +41,12 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		$inputUser = Input::only('username', 'email', 'password', 'password_confirmation');
-		$inputProfile = Input::only('firstname', 'lastname', 'display_name', 
+		$inputProfile = Input::only('firstname', 'lastname', 'display_name',
     	'company', 'organization', 'object', 'department',
     	'signature', 'title', 'skills', 'phone', 'mobile', 'inner',
     	'contact_email', 'data');
 		$valid = Validator::make($inputUser, User::$rules);
-		if ($valid->passes()) 
+		if ($valid->passes())
 		{
 			$inputUser['password'] = Hash::make($inputUser['password']);
 			$user = User::create($inputUser);
@@ -60,7 +60,7 @@ class UsersController extends \BaseController {
 			return Redirect::route('user.create')->withInput()->with('errors',$valid->errors());
 		}
 
-		
+
 	}
 
 	/**
@@ -83,23 +83,21 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($username)
 	{
-		$inputUser = Input::only('email', 'language', 'current_password', 
-			'password', 'password_confirmation');
-		
-		$valid = Validator::make($inputUser, User::$rules_settings);
+	    $input = Input::only(['language']);
+	    $user = User::whereUsername($username)->first();
 
-		$user = User::whereId($id)->get();
-		// TODO: Update
-		if ($valid->passes() and $user['password'] == Hash::make($inputUser['password'])) 
-		{
-			$user->update($inputUser);
-		}
-		else
-		{			
-			return Redirect::route('user.edit')->withInput()->with('errors',$valid->errors());
-		}
+        $rules_settings = [
+            'language' => 'required'
+        ];
+
+        $v = Validator::make($input, $rules_settings);
+
+        User::whereUsername($username)->update($input);
+
+        return Redirect::back();
+
 	}
 
 	/**
