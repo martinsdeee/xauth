@@ -85,7 +85,21 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$inputUser = Input::only('email', 'language', 'current_password', 
+			'password', 'password_confirmation');
+		
+		$valid = Validator::make($inputUser, User::$rules_settings);
+
+		$user = User::whereId($id)->get();
+		// TODO: Update
+		if ($valid->passes() and $user['password'] == Hash::make($inputUser['password'])) 
+		{
+			$user->update($inputUser);
+		}
+		else
+		{			
+			return Redirect::route('user.edit')->withInput()->with('errors',$valid->errors());
+		}
 	}
 
 	/**

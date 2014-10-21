@@ -46,15 +46,15 @@
             <!-- password Field -->
             <div class="form-group">
               {{ Form::label('password', 'Password:') }}
-              {{ Form::password('current_password', ['class' => 'form-control', 'placeholder' => 'Current Password' , 'required' => 'required']) }}
+              {{ Form::password('current_password', ['class' => 'form-control', 'placeholder' => 'Current Password']) }}
             </div>
             <!-- password_confirm Field -->
             <div class="form-group">
-              {{ Form::password('new_password', ['class' => 'form-control', 'placeholder' => 'New Password' , 'required' => 'required']) }}
+              {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'New Password' ]) }}
             </div>
             <!-- password_confirm Field -->
             <div class="form-group">
-              {{ Form::password('new_password_confirmation', ['class' => 'form-control', 'placeholder' => 'New Password Again' , 'required' => 'required']) }}
+              {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'New Password Again']) }}
             </div>
             <hr>
             <div class='form-group'>

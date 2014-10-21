@@ -59,8 +59,8 @@ Route::get('user/{username}/edit', [
 ]);
 
 Route::post('user/{username}/edit', [
-  'as'=>'user.store',
-  'uses'=>'UsersController@store'
+  'as'=>'user.update',
+  'uses'=>'UsersController@update'
 ]);
 
 /**
