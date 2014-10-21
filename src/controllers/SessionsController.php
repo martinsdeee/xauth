@@ -24,10 +24,11 @@ class SessionsController extends \BaseController {
   }
 
   public function store()
+
   {
-    $input = Input::only('usernameOrEmail', 'password');
+    $input = Input::only('usernameOrEmail', 'password', 'remember_me');
     $field = filter_var($input['usernameOrEmail'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-    if (Auth::attempt(array($field => $input['usernameOrEmail'], 'password' => $input['password']), true)) {
+    if (Auth::attempt(array($field => $input['usernameOrEmail'], 'password' => $input['password']), $input['remember_me'])) {
       return Redirect::intended('/');
     } 
     return Redirect::back()->withInput()->withFlashMessage('Invalid credentials provided');
