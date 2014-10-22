@@ -46,6 +46,12 @@ Migrate database
 php artisan migrate --package="martinsdeee/xauth"
 ```
 
+
+Configuration:
+```
+php artisan config:publish martinsdeee/xauth
+```
+
 Config User model `app/models/User.php`
 
 ```php

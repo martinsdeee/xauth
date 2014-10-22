@@ -7,7 +7,7 @@
   ];
 ?>
 
-@extends(Config::get('xauth::login-layout'))
+@extends(Config::get('xauth::default-layout'))
 
 @section('title', 'Password Remind')
 
