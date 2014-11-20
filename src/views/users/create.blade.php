@@ -40,14 +40,6 @@
 @section('content')
 	<div class="row">    
     <div class="col-md-4 col-md-offset-4">
-   
-      @if($errors->count()>0)
-      <ul class="alert alert-danger">
-        @foreach ($errors->all() as $key => $error)
-          <li>{{$error}}</li>
-        @endforeach
-      </ul>
-      @endif
       <div class="panel panel-default">
         <div class="panel-heading">
           Create New User
