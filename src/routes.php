@@ -117,7 +117,7 @@ Route::filter('currentUser', function($route)
 
 Route::filter('role', function($route, $request, $role)
 {
-  if (Auth::guest() or Auth::user()->hasRole($role))
+  if (Auth::guest() or !Auth::user()->hasRole($role))
   {
     return Redirect::to('/');
   }
