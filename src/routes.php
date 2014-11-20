@@ -68,6 +68,17 @@ Route::post('user/{username}/edit', [
   'uses'=>'UsersController@update'
 ]);
 
+// Change Password
+Route::get('user/{username}/password', [
+  'as'=>'password.edit',
+  'uses'=>'UsersController@password_edit'
+]);
+
+Route::post('user/{username}/password', [
+  'as'=>'password.update',
+  'uses'=>'UsersController@password_update'
+]);
+
 /**
  * Profile
  */

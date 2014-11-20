@@ -8,7 +8,7 @@ class UsersController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('currentUser', ['only'=>['edit','update']]);
+		$this->beforeFilter('currentUser', ['only'=>['edit','update', 'password_edit', 'password_update']]);
 	}
 	/**
 	 * Display a listing of the resource.
@@ -110,6 +110,32 @@ class UsersController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function password_edit($username)
+	{
+		$user = User::whereUsername($username)->first();
+		return View::make('xauth::users.change-password')->withUser($user);
+	}
+
+	public function password_update($username)
+	{
+		$input = Input::only(['password', 'password_confirmation']);
+	    $user = User::whereUsername($username)->first();
+
+        $rules_settings = [
+            'password' => 'required|confirmed|min:8|'
+        ];
+
+        $v = Validator::make($input, $rules_settings);
+        if ($v->passes()) {
+        	User::whereUsername($username)->update([
+        		'password' => Hash::make($input['password'])
+        	]);
+        }
+        
+
+        return Redirect::back()->withErrors($v->errors());
 	}
 
 }

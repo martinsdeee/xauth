@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 60);
 			$table->string('remember_token')->nullable();
 			$table->string('status')->nullable();			
-			$table->string('language')->default('EN');			
+			$table->string('language')->default('en');			
 			$table->string('created_by')->default('system');
 			$table->string('changed_by')->default('system');
 			$table->string('deleted_at')->nullable();

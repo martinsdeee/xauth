@@ -22,6 +22,14 @@
     '' => 'Select Job Title',
     'X' => 'X SPECIALIST' 
   ];
+
+  if(class_exists('Dropdown')){
+    $company = Dropdown::data('XX00', 'COMPANY', $company);
+    $organization = Dropdown::data('XX00', 'ORG', $organization);
+    $object = Dropdown::data('XX00', 'OBJECT', $object);
+    $department = Dropdown::data('XX00', 'DEPARTMENT', $department);
+    $title = Dropdown::data('XX00', 'TITLE', $title);
+  }
   
 ?>
 

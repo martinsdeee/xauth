@@ -1,8 +1,10 @@
 <?php 
+  
   $company = [
     '' => 'Select Company',
     '0000' => '0000 SIA COMPANY LATVIA'
   ];
+
   $organization = [
     '' => 'Select Organization',
     'XX00' => 'XX00 ORGANIZATION' 
@@ -22,6 +24,14 @@
     '' => 'Select Job Title',
     'X' => 'X SPECIALIST' 
   ];
+
+  if(class_exists('Dropdown')){
+    $company = Dropdown::data('XX00', 'COMPANY', $company);
+    $organization = Dropdown::data('XX00', 'ORG', $organization);
+    $object = Dropdown::data('XX00', 'OBJECT', $object);
+    $department = Dropdown::data('XX00', 'DEPARTMENT', $department);
+    $title = Dropdown::data('XX00', 'TITLE', $title);
+  }
   
 ?>
 
@@ -47,9 +57,9 @@
         <div class="panel-body">
           {{Form::model($profile)}}
             <!-- firstname Field -->
-            <div class="form-group">
+            <div class="form-group ">
               {{ Form::label('firstname', 'Firstname, Lastname:') }}
-              {{ Form::text('firstname', null, ['class' => 'form-control', 'placeholder' => 'Firstname']) }}
+              {{ Form::text('firstname', null, ['class' => 'form-control ', 'placeholder' => 'Firstname']) }}
             </div>
             
             <div class='form-group'>

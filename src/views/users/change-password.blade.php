@@ -1,18 +1,10 @@
 <?php
-  $language = [
-    '' => 'Select Language',
-    'EN' => 'EN',
-    'LV' => 'LV',
-    'ET' => 'ET',
-  ];
-  if(class_exists('Dropdown')){
-    $language = Dropdown::data('XX00', 'LANGUAGE', $language);
-  }
+  
 ?>
 
 @extends(Config::get('xauth::default-layout'))
 
-@section('title', 'Settings')
+@section('title', 'Change Password')
 
 @section('content')
 	<div class="row">
@@ -27,7 +19,7 @@
       @endif
       <div class="panel panel-default">
         <div class="panel-heading">
-          Settings
+          Change Password
         </div>
         <div class="panel-body">
           {{Form::model($user)}}
@@ -36,12 +28,18 @@
               {{ Form::label('username', 'Username') }}
               <input type="text" class="form-control" name="not_use" value="{{$user->username}}" disabled>
             </div>
-             <!-- language Field -->
+            <!-- Password Field -->
             <div class="form-group">
-              {{ Form::label('language', 'Language:') }}
-              {{ Form::select('language', $language, null, ['class' => 'form-control', 'placeholder' => 'language' ]) }}
+            	{{ Form::label('password', 'Password:') }}
+            	{{ Form::password('password', ['class' => 'form-control']) }}
             </div>
-            <!-- password Field -->
+
+            <!-- Password Confirmation Field -->
+            <div class="form-group">
+            	{{ Form::label('password_confirmation', 'Password Confirmation:') }}
+            	{{ Form::password('password_confirmation', ['class' => 'form-control']) }}
+            </div>
+                                    
             <hr>
             <div class='form-group'>
               <input class="btn btn btn-block btn-success" type="submit" value="Update" >
